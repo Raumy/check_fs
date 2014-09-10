@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkListStore" id="liststore">
+    <columns>
+      <!-- column-name pxb_type -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name filename -->
+      <column type="gchararray"/>
+      <!-- column-name infos -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="main_window">
+    <property name="width_request">700</property>
+    <property name="height_request">380</property>
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkFixed" id="fixed1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkScrolledWindow" id="scr_treeview">
+            <property name="width_request">675</property>
+            <property name="height_request">291</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="treeview">
+                <property name="width_request">500</property>
+                <property name="height_request">150</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="model">liststore</property>
+                <property name="headers_clickable">False</property>
+                <property name="search_column">0</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection" id="treeview-selection"/>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="Type">
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">30</property>
+                    <property name="title" translatable="yes">Type</property>
+                    <child>
+                      <object class="GtkCellRendererPixbuf" id="crt_type"/>
+                      <attributes>
+                        <attribute name="pixbuf">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="col_filename">
+                    <property name="resizable">True</property>
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">400</property>
+                    <property name="title" translatable="yes">Filename</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="crt_filename"/>
+                      <attributes>
+                        <attribute name="text">1</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkTreeViewColumn" id="col_infos">
+                    <property name="sizing">fixed</property>
+                    <property name="min_width">150</property>
+                    <property name="title" translatable="yes">Infos</property>
+                    <child>
+                      <object class="GtkCellRendererText" id="crt_infos"/>
+                      <attributes>
+                        <attribute name="text">2</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">15</property>
+            <property name="y">15</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bt_build">
+            <property name="label" translatable="yes">Build</property>
+            <property name="width_request">130</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="image_position">bottom</property>
+            <signal name="clicked" handler="bt_build" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">37</property>
+            <property name="y">330</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bt_compare">
+            <property name="label" translatable="yes">Compare</property>
+            <property name="width_request">130</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="bt_compare" swapped="no"/>
+          </object>
+          <packing>
+            <property name="x">203</property>
+            <property name="y">330</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="bt_display">
+            <property name="label" translatable="yes">Display</property>
+            <property name="width_request">130</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">387</property>
+            <property name="y">334</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
