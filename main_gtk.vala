@@ -152,8 +152,6 @@ void main(string[] args) {
 
 css.load_from_path ("theme/Evolve/gtk-3.0/gtk.css");
 
-
-
 Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), css,
        Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
        */
